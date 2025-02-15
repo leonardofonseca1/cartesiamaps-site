@@ -21,12 +21,6 @@ body {
     padding: 20px;
     position: fixed;
     height: 100%;
-    transform: translateX(-100%); /* Começa escondido */
-    transition: transform 0.3s ease;
-}
-
-#sidebar.active {
-    transform: translateX(0); /* Quando ativo, aparece */
 }
 
 #sidebar ul {
@@ -48,17 +42,8 @@ body {
     color: #0077cc;
 }
 
-/* Botão de 3 barras */
-.menu-toggle {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    font-size: 30px;
-    cursor: pointer;
-    z-index: 1000;
-}
-
-.main {
+/* Conteúdo Principal */
+main {
     margin-left: 220px; /* Espaço para o painel lateral */
     width: calc(100% - 220px);
 }
@@ -72,15 +57,20 @@ header {
 }
 
 header .logo {
-    width: 150px;
-    height: auto;
+    width: 150px; /* Ajuste o tamanho conforme necessário */
+    height: auto; /* Mantém a proporção da imagem */
 }
 
 .rounded-logo {
-    border: 10px solid white;
-    border-radius: 50%;
-    padding: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border: 10px solid white; /* Moldura branca */
+    border-radius: 50%; /* Torna a moldura redonda */
+    padding: 5px; /* Espaço entre a imagem e a moldura */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra suave */
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
 }
 
 /* Sobre Nós e Equipe */
@@ -103,12 +93,12 @@ header .logo {
 }
 
 .team-photo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 5px solid white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    object-fit: cover;
+    width: 150px; /* Tamanho fixo para a foto */
+    height: 150px; /* Tamanho fixo para a foto */
+    border-radius: 50%; /* Torna a foto redonda */
+    border: 5px solid white; /* Moldura branca */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra suave */
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorção */
 }
 
 .team-member h3 {
@@ -159,67 +149,3 @@ header .logo {
 }
 
 .carousel-control {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 24px;
-    z-index: 10;
-}
-
-.carousel-control.prev {
-    left: 10px;
-}
-
-.carousel-control.next {
-    right: 10px;
-}
-
-/* Contato */
-.messenger-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.messenger-buttons a {
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 1rem;
-}
-
-.email-button {
-    background-color: #0077cc;
-}
-
-.whatsapp-button {
-    background-color: #25d366;
-}
-
-.linkedin-button {
-    background-color: #0a66c2;
-}
-
-.instagram-button {
-    background-color: #E1306C;
-}
-
-.messenger-buttons a:hover {
-    opacity: 0.9;
-}
-
-/* Rodapé */
-footer {
-    background-color: rgb(23, 48, 44);
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    margin-top: 40px;
-}
