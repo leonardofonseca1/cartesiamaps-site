@@ -11,6 +11,7 @@ body {
     background-color: #f4f4f4;
     color: #333;
     display: flex;
+    flex-direction: column;
 }
 
 /* Painel Lateral */
@@ -21,6 +22,7 @@ body {
     padding: 20px;
     position: fixed;
     height: 100%;
+    transition: transform 0.3s ease-in-out;
 }
 
 #sidebar ul {
@@ -46,6 +48,7 @@ body {
 main {
     margin-left: 220px; /* Espaço para o painel lateral */
     width: calc(100% - 220px);
+    padding: 20px;
 }
 
 /* Cabeçalho */
@@ -82,33 +85,63 @@ header h1 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-#team .team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+/* Responsividade */
+@media (max-width: 768px) {
+    /* Ajuste o painel lateral para ser escondido em telas pequenas */
+    #sidebar {
+        transform: translateX(-100%); /* Esconde o painel */
+    }
+    #sidebar.active {
+        transform: translateX(0); /* Exibe o painel quando necessário */
+    }
+
+    /* Reduz o tamanho da fonte e ajusta o layout */
+    header h1 {
+        font-size: 2rem;
+    }
+
+    main {
+        margin-left: 0; /* Remove a margem à esquerda */
+        width: 100%;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr; /* Ajusta para uma coluna em telas pequenas */
+    }
+
+    /* Ajustes no carrossel */
+    .carousel-inner {
+        display: block;
+    }
+
+    .carousel-item {
+        width: 100%;
+    }
+
+    .carousel-caption {
+        font-size: 0.9rem;
+    }
+
+    /* Botões de redes sociais */
+    .messenger-buttons a {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        text-align: center;
+    }
 }
 
-.team-member {
-    text-align: center;
-}
+/* Responsividade para telas muito pequenas */
+@media (max-width: 480px) {
+    /* Reduz o tamanho das fotos da equipe */
+    .team-photo {
+        width: 120px;
+        height: 120px;
+    }
 
-.team-photo {
-    width: 150px; /* Tamanho fixo para a foto */
-    height: 150px; /* Tamanho fixo para a foto */
-    border-radius: 50%; /* Torna a foto redonda */
-    border: 5px solid white; /* Moldura branca */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra suave */
-    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorção */
-}
-
-.team-member h3 {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-}
-
-.team-member p {
-    font-size: 1rem;
-    color: #555;
+    header h1 {
+        font-size: 1.5rem;
+    }
 }
 
 /* Carrossel */
@@ -152,4 +185,17 @@ header h1 {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 2rem;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.carousel-control.prev {
+    left: 10px;
+}
+
+.carousel-control.next {
+    right: 10px;
+}
