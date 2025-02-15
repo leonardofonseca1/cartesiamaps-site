@@ -11,7 +11,6 @@ body {
     background-color: #f4f4f4;
     color: #333;
     display: flex;
-    flex-direction: column;
 }
 
 /* Painel Lateral */
@@ -22,7 +21,8 @@ body {
     padding: 20px;
     position: fixed;
     height: 100%;
-    transition: transform 0.3s ease-in-out;
+    transform: translateX(-100%); /* Esconde o painel por padrão */
+    transition: transform 0.3s ease;
 }
 
 #sidebar ul {
@@ -48,7 +48,6 @@ body {
 main {
     margin-left: 220px; /* Espaço para o painel lateral */
     width: calc(100% - 220px);
-    padding: 20px;
 }
 
 /* Cabeçalho */
@@ -60,20 +59,54 @@ header {
 }
 
 header .logo {
-    width: 150px; /* Ajuste o tamanho conforme necessário */
-    height: auto; /* Mantém a proporção da imagem */
+    width: 150px;
+    height: auto;
 }
 
 .rounded-logo {
-    border: 10px solid white; /* Moldura branca */
-    border-radius: 50%; /* Torna a moldura redonda */
-    padding: 5px; /* Espaço entre a imagem e a moldura */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra suave */
+    border: 10px solid white;
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 header h1 {
     font-size: 2.5rem;
     margin-bottom: 10px;
+}
+
+/* Botão do menu hamburger */
+.menu-toggle {
+    display: none;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.menu-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Responsividade para o menu */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    #sidebar {
+        transform: translateX(-100%);
+    }
+
+    #sidebar.active {
+        transform: translateX(0);
+    }
+
+    main {
+        margin-left: 0;
+    }
 }
 
 /* Sobre Nós e Equipe */
@@ -85,117 +118,48 @@ header h1 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    /* Ajuste o painel lateral para ser escondido em telas pequenas */
-    #sidebar {
-        transform: translateX(-100%); /* Esconde o painel */
-    }
-    #sidebar.active {
-        transform: translateX(0); /* Exibe o painel quando necessário */
-    }
-
-    /* Reduz o tamanho da fonte e ajusta o layout */
-    header h1 {
-        font-size: 2rem;
-    }
-
-    main {
-        margin-left: 0; /* Remove a margem à esquerda */
-        width: 100%;
-    }
-
-    .team-grid {
-        grid-template-columns: 1fr; /* Ajusta para uma coluna em telas pequenas */
-    }
-
-    /* Ajustes no carrossel */
-    .carousel-inner {
-        display: block;
-    }
-
-    .carousel-item {
-        width: 100%;
-    }
-
-    .carousel-caption {
-        font-size: 0.9rem;
-    }
-
-    /* Botões de redes sociais */
-    .messenger-buttons a {
-        display: block;
-        width: 100%;
-        margin-bottom: 10px;
-        text-align: center;
-    }
-}
-
-/* Responsividade para telas muito pequenas */
-@media (max-width: 480px) {
-    /* Reduz o tamanho das fotos da equipe */
-    .team-photo {
-        width: 120px;
-        height: 120px;
-    }
-
-    header h1 {
-        font-size: 1.5rem;
-    }
-}
-
-/* Carrossel */
-.carousel {
-    position: relative;
-    max-width: 800px;
-    margin: 20px auto;
-    overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.carousel-inner {
+/* Contato */
+.messenger-buttons {
     display: flex;
-    transition: transform 0.5s ease;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
 }
 
-.carousel-item {
-    min-width: 100%;
-    position: relative;
-}
-
-.carousel-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.carousel-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.7);
+.messenger-buttons a {
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
     color: #fff;
-    padding: 10px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.email-button {
+    background-color: #0077cc;
+}
+
+.whatsapp-button {
+    background-color: #25d366;
+}
+
+.linkedin-button {
+    background-color: #0a66c2;
+}
+
+.instagram-button {
+    background-color: #e4405f;
+}
+
+.messenger-buttons a:hover {
+    opacity: 0.9;
+}
+
+/* Rodapé */
+footer {
+    background-color: rgb(23, 48, 44);
+    color: #fff;
     text-align: center;
-}
-
-.carousel-control {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    font-size: 2rem;
-    padding: 10px;
-    cursor: pointer;
-}
-
-.carousel-control.prev {
-    left: 10px;
-}
-
-.carousel-control.next {
-    right: 10px;
+    padding: 10px 0;
+    margin-top: 40px;
 }
