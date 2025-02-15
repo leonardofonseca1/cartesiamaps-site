@@ -35,4 +35,114 @@
         <!-- Sobre Nós -->
         <section id="about">
             <h2>Sobre Nós</h2>
-            <p>A Cartesia Maps produz mapas personalizados para diversas aplicações, desde trabalhos acadêmicos e planejamento urbano até análise geográfica. Utilizamos técnicas de cartogra
+            <p>A Cartesia Maps produz mapas personalizados para diversas aplicações, desde trabalhos acadêmicos e planejamento urbano até análise geográfica. Utilizamos técnicas de cartografia e geoprocessamento para criar representações precisas do espaço, adaptadas às necessidades de cada projeto.</p>
+            <p>Nossos mapas podem ser utilizados para pesquisas, estudos ambientais, delimitação territorial, visualização de dados espaciais e muito mais. Trabalhamos com diferentes estilos e formatos, garantindo que cada mapa seja funcional e adequado ao seu propósito.</p>
+            <p>Se você precisa de um mapa detalhado e bem estruturado, a Cartesia Maps está pronta para ajudar.</p>
+        </section>
+
+        <!-- Equipe -->
+        <section id="team">
+            <h2>Equipe</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="images/leonardo.png" alt="Leonardo Fonseca" class="team-photo">
+                    <h3>Leonardo Fonseca</h3>
+                    <p>Graduando em Geografia (Bacharelado) na UFF, estagiário em Geoprocessamento no CIDAC da prefeitura de Campos dos Goytacazes e voluntário na célula ambiental do projeto Atlas Socioeconômico do Norte Fluminense.</p>
+                </div>
+                <div class="team-member">
+                    <img src="images/ruan.jpg" alt="Ruan Silva" class="team-photo">
+                    <h3>Ruan Silva</h3>
+                    <p>Bacharel em Geografia pela UFF Campos, onde foi bolsista de Iniciação Científica pelo CNPq em duas ocasiões. Atualmente, é mestrando no Programa de Pós-Graduação em Geografia da Universidade Federal Fluminense (PPG/UFF).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfólio -->
+        <section id="portfolio">
+            <h2>Portfólio</h2>
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="images/mapa1.jpg" alt="Mapa 1">
+                        <div class="carousel-caption">
+                            <h3>Mapa de Planejamento Urbano</h3>
+                            <p>Mapa detalhado para planejamento de infraestrutura urbana.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/mapa2.jpg" alt="Mapa 2">
+                        <div class="carousel-caption">
+                            <h3>Mapa Acadêmico</h3>
+                            <p>Mapa temático para estudos geográficos.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/mapa3.jpg" alt="Mapa 3">
+                        <div class="carousel-caption">
+                            <h3>Mapa Turístico</h3>
+                            <p>Mapa interativo para roteiros turísticos.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="carousel-control next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+        </section>
+
+        <!-- Contato -->
+        <section id="contact">
+            <h2>Contato</h2>
+            <div class="messenger-buttons">
+                <a href="mailto:cartesiamapscontato@gmail.com" class="email-button">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+                <a href="https://api.whatsapp.com/send?phone=SEU_NUMERO" class="whatsapp-button">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://linkedin.com/in/cartesia-maps" class="linkedin-button" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://www.instagram.com/cartesiamaps/" class="instagram-button" target="_blank">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+            </div>
+        </section>
+
+        <!-- Rodapé -->
+        <footer>
+            <p>&copy; 2025 Cartesia Maps. Todos os direitos reservados.</p>
+        </footer>
+    </main>
+
+    <!-- JavaScript para o carrossel e menu hamburger -->
+    <script>
+        // JavaScript para o carrossel
+        let currentIndex = 0;
+
+        function moveSlide(direction) {
+            const carouselInner = document.querySelector('.carousel-inner');
+            const slides = document.querySelectorAll('.carousel-item');
+            const totalSlides = slides.length;
+
+            currentIndex += direction;
+
+            if (currentIndex >= totalSlides) {
+                currentIndex = 0;
+            } else if (currentIndex < 0) {
+                currentIndex = totalSlides - 1;
+            }
+
+            const offset = -currentIndex * 100;
+            carouselInner.style.transform = `translateX(${offset}%)`;
+        }
+
+        // JavaScript para o menu hamburger
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
