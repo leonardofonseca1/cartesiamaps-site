@@ -126,6 +126,11 @@ header h1 {
     border: 5px solid white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     object-fit: cover;
+    transition: transform 0.3s ease; /* Adiciona transição suave */
+}
+
+.team-photo:hover {
+    transform: scale(1.1); /* Aumenta ligeiramente o tamanho da foto */
 }
 
 .team-member h3 {
@@ -255,9 +260,10 @@ footer {
 }
 
 /* Responsividade para mobile e desktop */
-.hamburger-btn {
-    display: block; /* Mostra o botão em todas as telas */
-}
+@media (max-width: 768px) {
+    .hamburger-btn {
+        display: block; /* Mostra o botão em todas as telas */
+    }
 
     /* Ajusta o conteúdo principal */
     main {
