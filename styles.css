@@ -10,17 +10,43 @@ body {
     line-height: 1.6;
     background-color: #f4f4f4;
     color: #333;
-    display: flex;
+}
+
+/* Botão Hambúrguer (mobile) */
+.hamburger-btn {
+    display: none; /* Oculta em desktop */
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgb(23, 48, 44);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+.hamburger-btn:hover {
+    transform: scale(1.1);
 }
 
 /* Painel Lateral */
 #sidebar {
-    width: 200px;
+    width: 250px;
     background-color: rgb(23, 48, 44);
     color: #fff;
     padding: 20px;
     position: fixed;
     height: 100%;
+    left: -250px; /* Oculta por padrão */
+    transition: left 0.3s ease;
+    z-index: 999;
+}
+
+#sidebar.active {
+    left: 0; /* Mostra quando ativo */
 }
 
 #sidebar ul {
@@ -44,8 +70,9 @@ body {
 
 /* Conteúdo Principal */
 main {
-    margin-left: 220px; /* Espaço para o painel lateral */
+    margin-left: 220px;
     width: calc(100% - 220px);
+    transition: margin 0.3s ease;
 }
 
 /* Cabeçalho */
@@ -225,4 +252,33 @@ footer {
     text-align: center;
     padding: 10px 0;
     margin-top: 40px;
+}
+
+/* Responsividade para mobile */
+@media (max-width: 768px) {
+    /* Mostra o botão hambúrguer */
+    .hamburger-btn {
+        display: block;
+    }
+
+    /* Ajusta o conteúdo principal */
+    main {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    /* Mostra o painel lateral quando ativo */
+    #sidebar.active + main {
+        margin-left: 250px;
+    }
+
+    /* Equipe: ajusta o grid para mobile */
+    .team-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Carrossel: ajusta altura */
+    .carousel {
+        max-width: 100%;
+    }
 }
