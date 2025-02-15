@@ -40,13 +40,20 @@ body {
     padding: 20px;
     position: fixed;
     height: 100%;
-    left: -250px; /* Oculta por padrão */
+    left: 0; /* Exibe por padrão em desktop */
     transition: left 0.3s ease;
     z-index: 999;
 }
 
-#sidebar.active {
-    left: 0; /* Mostra quando ativo */
+/* Oculta o painel lateral em mobile */
+@media (max-width: 768px) {
+    #sidebar {
+        left: -250px; /* Oculta em mobile */
+    }
+
+    #sidebar.active {
+        left: 0; /* Mostra quando ativo em mobile */
+    }
 }
 
 #sidebar ul {
@@ -70,9 +77,21 @@ body {
 
 /* Conteúdo Principal */
 main {
-    margin-left: 220px;
-    width: calc(100% - 220px);
+    margin-left: 250px; /* Desloca o conteúdo para a direita em desktop */
+    width: calc(100% - 250px);
     transition: margin 0.3s ease;
+}
+
+/* Ajusta o conteúdo principal em mobile */
+@media (max-width: 768px) {
+    main {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    #sidebar.active + main {
+        margin-left: 250px;
+    }
 }
 
 /* Cabeçalho */
@@ -259,21 +278,10 @@ footer {
     margin-top: 40px;
 }
 
-/* Responsividade para mobile e desktop */
+/* Responsividade para mobile */
 @media (max-width: 768px) {
     .hamburger-btn {
-        display: block; /* Mostra o botão em todas as telas */
-    }
-
-    /* Ajusta o conteúdo principal */
-    main {
-        margin-left: 0;
-        width: 100%;
-    }
-
-    /* Mostra o painel lateral quando ativo */
-    #sidebar.active + main {
-        margin-left: 250px;
+        display: block; /* Mostra o botão em mobile */
     }
 
     /* Equipe: ajusta o grid para mobile */
