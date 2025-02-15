@@ -254,12 +254,10 @@ footer {
     margin-top: 40px;
 }
 
-/* Responsividade para mobile */
-@media (max-width: 768px) {
-    /* Mostra o botão hambúrguer */
-    .hamburger-btn {
-        display: block;
-    }
+/* Responsividade para mobile e desktop */
+.hamburger-btn {
+    display: block; /* Mostra o botão em todas as telas */
+}
 
     /* Ajusta o conteúdo principal */
     main {
