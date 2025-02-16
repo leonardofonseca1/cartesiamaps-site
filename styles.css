@@ -266,7 +266,6 @@ header h1 {
 }
 
 :fullscreen .carousel-item:not(.active) {
-    visibility: hidden; /* Oculta os slides inativos sem remover do layout */
     opacity: 0; /* Torna os slides inativos transparentes */
     transition: opacity 0.5s ease; /* Adiciona transição de opacidade */
 }
@@ -274,6 +273,12 @@ header h1 {
 :fullscreen .carousel-item.active {
     visibility: visible; /* Exibe o slide ativo */
     opacity: 1; /* Torna o slide ativo visível */
+}
+
+:fullscreen .carousel-item:first-child {
+    display: flex; /* Força a exibição do primeiro item */
+    align-items: center;
+    justify-content: center;
 }
 
 :fullscreen .carousel-item img {
