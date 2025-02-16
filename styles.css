@@ -270,6 +270,16 @@ header h1 {
     aspect-ratio: 1/1.414; /* Proporção A4 */
 }
 
+:fullscreen .carousel-item.active {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+:fullscreen .carousel-item:not(.active) {
+    display: none !important;
+}
+
 /* Ajustes para orientação */
 @media (orientation: portrait) {
     :fullscreen .carousel-item img {
@@ -315,17 +325,6 @@ header h1 {
 
 :-moz-full-screen .fullscreen-exit-btn {
     display: block;
-}
-
-/* Garantir que o item ativo seja exibido corretamente */
-:fullscreen .carousel-item.active {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-}
-
-:fullscreen .carousel-item:not(.active) {
-    display: none !important;
 }
 
 /* Contato */
