@@ -285,12 +285,47 @@ header h1 {
     }
 }
 
-/* Compatibilidade Cross-Browser */
-:-webkit-full-screen .carousel,
-:-moz-full-screen .carousel {
+/* Botão de sair do fullscreen */
+.fullscreen-exit-btn {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1001;
+    transition: opacity 0.3s ease;
+}
+
+.fullscreen-exit-btn:hover {
+    opacity: 0.8;
+}
+
+:fullscreen .fullscreen-exit-btn {
+    display: block;
+}
+
+:-webkit-full-screen .fullscreen-exit-btn {
+    display: block;
+}
+
+:-moz-full-screen .fullscreen-exit-btn {
+    display: block;
+}
+
+/* Garantir que o item ativo seja exibido corretamente */
+:fullscreen .carousel-item.active {
     display: flex !important;
     align-items: center;
     justify-content: center;
+}
+
+:fullscreen .carousel-item:not(.active) {
+    display: none !important;
 }
 
 /* Contato */
