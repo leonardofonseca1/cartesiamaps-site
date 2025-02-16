@@ -236,7 +236,7 @@ header h1 {
     background: rgba(0, 0, 0, 0.8);
 }
 
-/* Tela Cheia - Otimizado para A4 */
+/* Tela Cheia - Exibir um mapa por vez */
 :fullscreen .carousel {
     display: flex;
     align-items: center;
@@ -247,49 +247,46 @@ header h1 {
 }
 
 :fullscreen .carousel-inner {
-    max-width: 90%;
-    max-height: 90vh;
-    aspect-ratio: 1/1.414; /* Proporção A4 */
-    transition: transform 0.3s ease;
-}
-
-:fullscreen .carousel-item {
+    width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-:fullscreen .carousel-item img {
-    object-fit: contain;
-    width: auto !important;
-    height: auto !important;
-    max-width: 100%;
-    max-height: 100%;
+:fullscreen .carousel-item {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.5s ease;
 }
 
-/* Ajustes de Orientação */
+:fullscreen .carousel-item img {
+    object-fit: contain;
+    max-width: 90%;
+    max-height: 90vh;
+    aspect-ratio: 1/1.414; /* Proporção A4 */
+}
+
+/* Ajustes para orientação */
 @media (orientation: portrait) {
-    :fullscreen .carousel-inner {
+    :fullscreen .carousel-item img {
         max-width: 85%;
         max-height: 85vh;
     }
 }
 
 @media (orientation: landscape) {
-    :fullscreen .carousel-inner {
+    :fullscreen .carousel-item img {
         max-width: 90vw;
         max-height: 90vh;
     }
 }
 
 /* Compatibilidade Cross-Browser */
-:-webkit-full-screen .carousel { 
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-}
-
+:-webkit-full-screen .carousel,
 :-moz-full-screen .carousel {
     display: flex !important;
     align-items: center;
@@ -361,11 +358,5 @@ footer {
 
     .carousel {
         max-width: 100%;
-    }
-
-    /* Ajuste fino para mobile em tela cheia */
-    :fullscreen .carousel-inner {
-        max-width: 95%;
-        max-height: 80vh;
     }
 }
