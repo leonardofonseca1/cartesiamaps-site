@@ -92,6 +92,10 @@
                 <button class="fullscreen-btn" onclick="toggleFullscreen()">
                     <i class="fas fa-expand"></i>
                 </button>
+                <!-- Botão de sair do fullscreen -->
+                <button class="fullscreen-exit-btn" onclick="exitFullscreen()">
+                    <i class="fas fa-compress"></i> Sair
+                </button>
             </div>
         </section>
 
@@ -188,6 +192,19 @@
                 } else if (document.msExitFullscreen) {
                     document.msExitFullscreen();
                 }
+            }
+        }
+
+        // Função para sair do modo de tela cheia
+        function exitFullscreen() {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) { // Firefox
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) { // Chrome, Safari e Opera
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) { // IE/Edge
+                document.msExitFullscreen();
             }
         }
 
