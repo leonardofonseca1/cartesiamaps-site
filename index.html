@@ -144,6 +144,15 @@
 
             const offset = -currentIndex * 100;
             carouselInner.style.transform = `translateX(${offset}%)`;
+
+            // Atualiza a classe 'active' nos slides
+            slides.forEach((slide, index) => {
+                if (index === currentIndex) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
         }
 
         // Menu hambúrguer
