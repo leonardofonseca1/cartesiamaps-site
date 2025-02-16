@@ -276,9 +276,8 @@ header h1 {
 }
 
 :fullscreen .carousel-item:first-child {
-    display: flex; /* Força a exibição do primeiro item */
-    align-items: center;
-    justify-content: center;
+    visibility: visible !important; /* Força a exibição do primeiro item */
+    opacity: 1 !important;
 }
 
 :fullscreen .carousel-item img {
