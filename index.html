@@ -135,153 +135,160 @@
     <!-- JavaScript -->
     <script>
         // Carrossel
-        let currentIndex = 0;
+let currentIndex = 0;
 
-        function moveSlide(direction) {
-            const carouselInner = document.querySelector('.carousel-inner');
-            const slides = document.querySelectorAll('.carousel-item');
-            const totalSlides = slides.length;
+function moveSlide(direction) {
+    const carouselInner = document.querySelector('.carousel-inner');
+    const slides = document.querySelectorAll('.carousel-item');
+    const totalSlides = slides.length;
 
-            currentIndex += direction;
+    currentIndex += direction;
 
-            if (currentIndex >= totalSlides) {
-                currentIndex = 0;
-            } else if (currentIndex < 0) {
-                currentIndex = totalSlides - 1;
-            }
+    if (currentIndex >= totalSlides) {
+        currentIndex = 0;
+    } else if (currentIndex < 0) {
+        currentIndex = totalSlides - 1;
+    }
 
-            const offset = -currentIndex * 100;
-            carouselInner.style.transform = `translateX(${offset}%)`;
+    const offset = -currentIndex * 100;
+    carouselInner.style.transform = `translateX(${offset}%)`;
 
-            // Atualiza a classe 'active' nos slides
-            slides.forEach((slide, index) => {
-                if (index === currentIndex) {
-                    slide.classList.add('active');
-                } else {
-                    slide.classList.remove('active');
-                }
-            });
+    // Atualiza a classe 'active' nos slides
+    slides.forEach((slide, index) => {
+        if (index === currentIndex) {
+            slide.classList.add('active');
+        } else {
+            slide.classList.remove('active');
         }
+    });
 
-        // Menu hambúrguer
-        document.addEventListener('DOMContentLoaded', function() {
-            const sidebar = document.getElementById('sidebar');
-            const sidebarToggle = document.getElementById('sidebarToggle');
-            const mainContent = document.querySelector('main');
+    // Força a atualização do layout no modo de tela cheia
+    if (document.fullscreenElement) {
+        carouselInner.style.display = 'none';
+        carouselInner.offsetHeight; // Força o recálculo do layout
+        carouselInner.style.display = 'flex';
+    }
+}
 
-            sidebarToggle.addEventListener('click', function() {
-                sidebar.classList.toggle('active');
-            });
+// Menu hambúrguer
+document.addEventListener('DOMContentLoaded', function() {
+    const sidebar = document.getElementById('sidebar');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const mainContent = document.querySelector('main');
 
-            mainContent.addEventListener('click', function() {
-                if (window.innerWidth <= 768 && sidebar.classList.contains('active')) {
-                    sidebar.classList.remove('active');
-                }
-            });
-        });
+    sidebarToggle.addEventListener('click', function() {
+        sidebar.classList.toggle('active');
+    });
 
-        // Tela cheia
-        function toggleFullscreen() {
-            const carousel = document.querySelector('.carousel');
-            const activeImg = document.querySelector('.carousel-item.active img');
-            
-            if (activeImg) {
-                activeImg.style.objectFit = 'contain';
-            }
-
-            if (!document.fullscreenElement) {
-                if (carousel.requestFullscreen) {
-                    carousel.requestFullscreen();
-                } else if (carousel.mozRequestFullScreen) {
-                    carousel.mozRequestFullScreen();
-                } else if (carousel.webkitRequestFullscreen) {
-                    carousel.webkitRequestFullscreen();
-                } else if (carousel.msRequestFullscreen) {
-                    carousel.msRequestFullscreen();
-                }
-            } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.mozCancelFullScreen) {
-                    document.mozCancelFullScreen();
-                } else if (document.webkitExitFullscreen) {
-                    document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) {
-                    document.msExitFullscreen();
-                }
-            }
+    mainContent.addEventListener('click', function() {
+        if (window.innerWidth <= 768 && sidebar.classList.contains('active')) {
+            sidebar.classList.remove('active');
         }
+    });
+});
 
-        // Função para sair do modo de tela cheia
-        function exitFullscreen() {
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            } else if (document.mozCancelFullScreen) { // Firefox
-                document.mozCancelFullScreen();
-            } else if (document.webkitExitFullscreen) { // Chrome, Safari e Opera
-                document.webkitExitFullscreen();
-            } else if (document.msExitFullscreen) { // IE/Edge
-                document.msExitFullscreen();
-            }
+// Tela cheia
+function toggleFullscreen() {
+    const carousel = document.querySelector('.carousel');
+    const activeImg = document.querySelector('.carousel-item.active img');
+    
+    if (activeImg) {
+        activeImg.style.objectFit = 'contain';
+    }
+
+    if (!document.fullscreenElement) {
+        if (carousel.requestFullscreen) {
+            carousel.requestFullscreen();
+        } else if (carousel.mozRequestFullScreen) {
+            carousel.mozRequestFullScreen();
+        } else if (carousel.webkitRequestFullscreen) {
+            carousel.webkitRequestFullscreen();
+        } else if (carousel.msRequestFullscreen) {
+            carousel.msRequestFullscreen();
         }
-
-        // Atualizar ícone do botão de tela cheia
-        document.addEventListener('fullscreenchange', updateFullscreenButton);
-        document.addEventListener('webkitfullscreenchange', updateFullscreenButton);
-        document.addEventListener('mozfullscreenchange', updateFullscreenButton);
-        document.addEventListener('MSFullscreenChange', updateFullscreenButton);
-
-        function updateFullscreenButton() {
-            const fullscreenBtn = document.querySelector('.fullscreen-btn');
-            if (document.fullscreenElement) {
-                fullscreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
-            } else {
-                fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
-            }
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
         }
+    }
+}
 
-        // Controle de legendas com clique
-        document.querySelectorAll('.carousel-item').forEach(item => {
-            item.addEventListener('click', function(e) {
-                if (!e.target.closest('.carousel-control') && !e.target.closest('.fullscreen-btn')) {
-                    const caption = this.querySelector('.carousel-caption');
-                    caption.classList.toggle('active');
-                }
-            });
-        });
+// Função para sair do modo de tela cheia
+function exitFullscreen() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) { // Firefox
+        document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) { // Chrome, Safari e Opera
+        document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) { // IE/Edge
+        document.msExitFullscreen();
+    }
+}
 
-        // Bloqueio de download
-        document.querySelectorAll('.carousel-item img').forEach(img => {
-            img.addEventListener('contextmenu', (e) => {
-                e.preventDefault();
-                return false;
-            });
+// Atualizar ícone do botão de tela cheia
+document.addEventListener('fullscreenchange', updateFullscreenButton);
+document.addEventListener('webkitfullscreenchange', updateFullscreenButton);
+document.addEventListener('mozfullscreenchange', updateFullscreenButton);
+document.addEventListener('MSFullscreenChange', updateFullscreenButton);
 
-            img.addEventListener('touchstart', (e) => {
-                e.preventDefault();
-                return false;
-            }, { passive: false });
+function updateFullscreenButton() {
+    const fullscreenBtn = document.querySelector('.fullscreen-btn');
+    if (document.fullscreenElement) {
+        fullscreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
+    } else {
+        fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+    }
+}
 
-            img.addEventListener('touchend', (e) => {
-                e.preventDefault();
-                return false;
-            }, { passive: false });
-        });
+// Controle de legendas com clique
+document.querySelectorAll('.carousel-item').forEach(item => {
+    item.addEventListener('click', function(e) {
+        if (!e.target.closest('.carousel-control') && !e.target.closest('.fullscreen-btn')) {
+            const caption = this.querySelector('.carousel-caption');
+            caption.classList.toggle('active');
+        }
+    });
+});
 
-        // Adiciona estilos de proteção dinamicamente
-        const antiDownloadStyle = document.createElement('style');
-        antiDownloadStyle.textContent = `
-            .carousel-item img {
-                user-select: none;
-                -webkit-user-drag: none;
-                pointer-events: none;
-            }
-            .carousel-item {
-                pointer-events: auto !important;
-                cursor: pointer;
-            }
-        `;
-        document.head.appendChild(antiDownloadStyle);
+// Bloqueio de download
+document.querySelectorAll('.carousel-item img').forEach(img => {
+    img.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        return false;
+    });
+
+    img.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        return false;
+    }, { passive: false });
+
+    img.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        return false;
+    }, { passive: false });
+});
+
+// Adiciona estilos de proteção dinamicamente
+const antiDownloadStyle = document.createElement('style');
+antiDownloadStyle.textContent = `
+    .carousel-item img {
+        user-select: none;
+        -webkit-user-drag: none;
+        pointer-events: none;
+    }
+    .carousel-item {
+        pointer-events: auto !important;
+        cursor: pointer;
+    }
+`;
+document.head.appendChild(antiDownloadStyle);
     </script>
 </body>
 </html>
