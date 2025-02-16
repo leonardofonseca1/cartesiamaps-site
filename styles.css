@@ -261,6 +261,19 @@ header h1 {
     align-items: center;
     justify-content: center;
     transition: transform 0.5s ease;
+    visibility: visible !important; /* Garante que todos os slides estejam visíveis */
+    opacity: 1 !important; /* Garante que todos os slides estejam visíveis */
+}
+
+:fullscreen .carousel-item:not(.active) {
+    visibility: hidden; /* Oculta os slides inativos sem remover do layout */
+    opacity: 0; /* Torna os slides inativos transparentes */
+    transition: opacity 0.5s ease; /* Adiciona transição de opacidade */
+}
+
+:fullscreen .carousel-item.active {
+    visibility: visible; /* Exibe o slide ativo */
+    opacity: 1; /* Torna o slide ativo visível */
 }
 
 :fullscreen .carousel-item img {
@@ -268,16 +281,6 @@ header h1 {
     max-width: 90%;
     max-height: 90vh;
     aspect-ratio: 1/1.414; /* Proporção A4 */
-}
-
-:fullscreen .carousel-item.active {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-}
-
-:fullscreen .carousel-item:not(.active) {
-    display: none !important;
 }
 
 /* Ajustes para orientação */
