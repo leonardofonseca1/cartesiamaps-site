@@ -14,7 +14,7 @@ body {
 
 /* Botão Hambúrguer (mobile) */
 .hamburger-btn {
-    display: none; /* Oculta em desktop */
+    display: none;
     position: fixed;
     top: 20px;
     left: 20px;
@@ -40,19 +40,18 @@ body {
     padding: 20px;
     position: fixed;
     height: 100%;
-    left: 0; /* Exibe por padrão em desktop */
+    left: 0;
     transition: left 0.3s ease;
     z-index: 999;
 }
 
-/* Oculta o painel lateral em mobile */
 @media (max-width: 768px) {
     #sidebar {
-        left: -250px; /* Oculta em mobile */
+        left: -250px;
     }
 
     #sidebar.active {
-        left: 0; /* Mostra quando ativo em mobile */
+        left: 0;
     }
 }
 
@@ -77,12 +76,11 @@ body {
 
 /* Conteúdo Principal */
 main {
-    margin-left: 250px; /* Desloca o conteúdo para a direita em desktop */
+    margin-left: 250px;
     width: calc(100% - 250px);
     transition: margin 0.3s ease;
 }
 
-/* Ajusta o conteúdo principal em mobile */
 @media (max-width: 768px) {
     main {
         margin-left: 0;
@@ -145,11 +143,11 @@ header h1 {
     border: 5px solid white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     object-fit: cover;
-    transition: transform 0.3s ease; /* Adiciona transição suave */
+    transition: transform 0.3s ease;
 }
 
 .team-photo:hover {
-    transform: scale(1.1); /* Aumenta ligeiramente o tamanho da foto */
+    transform: scale(1.1);
 }
 
 .team-member h3 {
@@ -186,6 +184,14 @@ header h1 {
     width: 100%;
     height: auto;
     display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+}
+
+.carousel-item {
+    pointer-events: auto !important;
+    cursor: pointer;
 }
 
 .carousel-caption {
@@ -197,6 +203,14 @@ header h1 {
     color: #fff;
     padding: 10px;
     text-align: center;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-caption.active {
+    display: block;
+    opacity: 1;
 }
 
 .carousel-control {
@@ -281,16 +295,33 @@ footer {
 /* Responsividade para mobile */
 @media (max-width: 768px) {
     .hamburger-btn {
-        display: block; /* Mostra o botão em mobile */
+        display: block;
     }
 
-    /* Equipe: ajusta o grid para mobile */
     .team-grid {
         grid-template-columns: 1fr !important;
     }
 
-    /* Carrossel: ajusta altura */
     .carousel {
         max-width: 100%;
     }
+}
+
+/* Ajustes para tela cheia */
+:fullscreen .carousel-item img {
+    object-fit: contain !important;
+    height: 100% !important;
+    width: 100% !important;
+}
+
+:-webkit-full-screen .carousel-item img {
+    object-fit: contain !important;
+    height: 100% !important;
+    width: 100% !important;
+}
+
+:-moz-full-screen .carousel-item img {
+    object-fit: contain !important;
+    height: 100% !important;
+    width: 100% !important;
 }
