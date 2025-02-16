@@ -178,6 +178,7 @@ header h1 {
 .carousel-item {
     min-width: 100%;
     position: relative;
+    cursor: pointer;
 }
 
 .carousel-item img {
@@ -189,11 +190,7 @@ header h1 {
     pointer-events: none;
 }
 
-.carousel-item {
-    pointer-events: auto !important;
-    cursor: pointer;
-}
-
+/* Legendas */
 .carousel-caption {
     position: absolute;
     bottom: 0;
@@ -213,6 +210,7 @@ header h1 {
     opacity: 1;
 }
 
+/* Controles do Carrossel */
 .carousel-control {
     position: absolute;
     top: 50%;
@@ -238,6 +236,66 @@ header h1 {
     background: rgba(0, 0, 0, 0.8);
 }
 
+/* Tela Cheia - Otimizado para A4 */
+:fullscreen .carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.95);
+    width: 100vw !important;
+    height: 100vh !important;
+}
+
+:fullscreen .carousel-inner {
+    max-width: 90%;
+    max-height: 90vh;
+    aspect-ratio: 1/1.414; /* Proporção A4 */
+    transition: transform 0.3s ease;
+}
+
+:fullscreen .carousel-item {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+:fullscreen .carousel-item img {
+    object-fit: contain;
+    width: auto !important;
+    height: auto !important;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Ajustes de Orientação */
+@media (orientation: portrait) {
+    :fullscreen .carousel-inner {
+        max-width: 85%;
+        max-height: 85vh;
+    }
+}
+
+@media (orientation: landscape) {
+    :fullscreen .carousel-inner {
+        max-width: 90vw;
+        max-height: 90vh;
+    }
+}
+
+/* Compatibilidade Cross-Browser */
+:-webkit-full-screen .carousel { 
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+:-moz-full-screen .carousel {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Contato */
 .messenger-buttons {
     display: flex;
@@ -258,7 +316,6 @@ header h1 {
     align-items: center;
 }
 
-/* Estilos dos botões */
 .email-button {
     background-color: #0077cc;
 }
@@ -292,7 +349,7 @@ footer {
     margin-top: 40px;
 }
 
-/* Responsividade para mobile */
+/* Responsividade Mobile */
 @media (max-width: 768px) {
     .hamburger-btn {
         display: block;
@@ -305,23 +362,10 @@ footer {
     .carousel {
         max-width: 100%;
     }
-}
 
-/* Ajustes para tela cheia */
-:fullscreen .carousel-item img {
-    object-fit: contain !important;
-    height: 100% !important;
-    width: 100% !important;
-}
-
-:-webkit-full-screen .carousel-item img {
-    object-fit: contain !important;
-    height: 100% !important;
-    width: 100% !important;
-}
-
-:-moz-full-screen .carousel-item img {
-    object-fit: contain !important;
-    height: 100% !important;
-    width: 100% !important;
+    /* Ajuste fino para mobile em tela cheia */
+    :fullscreen .carousel-inner {
+        max-width: 95%;
+        max-height: 80vh;
+    }
 }
