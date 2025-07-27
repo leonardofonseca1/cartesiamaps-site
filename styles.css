@@ -1,4 +1,4 @@
-/* Reset básico */
+/* Reset básico e fontes */
 * {
     margin: 0;
     padding: 0;
@@ -12,19 +12,19 @@ background-color: \#f4f4f4;
 color: \#333;
 }
 
-/\* Botão Hambúrguer (mobile) */
+/\* Botão Hambúrguer para Mobile \*/
 .hamburger-btn {
 display: none;
 position: fixed;
-top: 20px;
-left: 20px;
+top: 15px;
+left: 15px;
 background: rgb(23, 48, 44);
 color: white;
 border: none;
-padding: 10px;
+padding: 10px 12px;
 border-radius: 5px;
 cursor: pointer;
-z-index: 1001; /* Aumentado para ficar sobre o mapa \*/
+z-index: 1001;
 transition: transform 0.3s ease;
 }
 
@@ -32,7 +32,7 @@ transition: transform 0.3s ease;
 transform: scale(1.1);
 }
 
-/\* Painel Lateral \*/
+/\* Painel Lateral (Sidebar) \*/
 \#sidebar {
 width: 250px;
 background-color: rgb(23, 48, 44);
@@ -46,21 +46,13 @@ z-index: 1000;
 flex-shrink: 0;
 }
 
-@media (max-width: 768px) {
-\#sidebar {
-left: -250px;
-}
-\#sidebar.active {
-left: 0;
-}
-}
-
 \#sidebar ul {
 list-style: none;
+padding-top: 40px;
 }
 
 \#sidebar ul li {
-margin-bottom: 15px;
+margin-bottom: 20px;
 }
 
 \#sidebar ul li a {
@@ -71,7 +63,12 @@ transition: color 0.3s ease;
 }
 
 \#sidebar ul li a:hover {
-color: \#0077cc;
+color: \#00aaff;
+}
+
+\#sidebar ul li a.active-link {
+color: \#00aaff;
+font-weight: bold;
 }
 
 /\* Conteúdo Principal \*/
@@ -90,9 +87,15 @@ width: 100%;
 .hamburger-btn {
 display: block;
 }
+\#sidebar {
+left: -250px;
+}
+\#sidebar.active {
+left: 0;
+}
 }
 
-/\* Cabeçalho \*/
+/\* Cabeçalho do Site Principal \*/
 header {
 background-color: rgb(23, 48, 44);
 color: \#fff;
@@ -103,18 +106,9 @@ text-align: center;
 header .logo {
 width: 150px;
 height: auto;
-}
-
-.rounded-logo {
 border: 10px solid white;
 border-radius: 50%;
-padding: 5px;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
-header h1 {
-font-size: 2.5rem;
-margin-bottom: 10px;
 }
 
 /\* Seções de Conteúdo \*/
@@ -126,16 +120,12 @@ border-radius: 8px;
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-\#team .team-grid {
+.team-grid {
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 gap: 20px;
 }
-
-.team-member {
-text-align: center;
-}
-
+.team-member { text-align: center; }
 .team-photo {
 width: 150px;
 height: 150px;
@@ -143,11 +133,6 @@ border-radius: 50%;
 border: 5px solid white;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 object-fit: cover;
-transition: transform 0.3s ease;
-}
-
-.team-photo:hover {
-transform: scale(1.1);
 }
 
 /\* Carrossel \*/
@@ -157,102 +142,43 @@ max-width: 800px;
 margin: 20px auto;
 overflow: hidden;
 border-radius: 8px;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-.carousel-inner {
-display: flex;
-transition: transform 0.5s ease;
-}
-
-.carousel-item {
-min-width: 100%;
-position: relative;
-cursor: pointer;
-}
-
-.carousel-item img {
-width: 100%;
-height: auto;
-display: block;
-}
-
-.carousel-caption {
-position: absolute;
-bottom: 0;
-left: 0;
-right: 0;
-background: rgba(0, 0, 0, 0.7);
-color: \#fff;
-padding: 10px;
-text-align: center;
-opacity: 0;
-transition: opacity 0.3s ease;
-pointer-events: none;
-}
-
-.carousel-item:hover .carousel-caption, .carousel-item.active .carousel-caption {
-opacity: 1;
-}
-
-.carousel-control {
-position: absolute;
-top: 50%;
-transform: translateY(-50%);
-background: rgba(0, 0, 0, 0.5);
-color: \#fff;
-border: none;
-padding: 10px;
-cursor: pointer;
-font-size: 24px;
-z-index: 10;
-}
+.carousel-inner { display: flex; transition: transform 0.5s ease; }
+.carousel-item { min-width: 100%; position: relative; cursor: pointer; }
+.carousel-item img { width: 100%; display: block; }
+.carousel-caption { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.7); color: \#fff; padding: 15px; text-align: center; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; }
+.carousel-item.active .carousel-caption, .carousel-item:hover .carousel-caption { opacity: 1; }
+.carousel-control { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.5); color: \#fff; border: none; padding: 10px 15px; cursor: pointer; font-size: 24px; z-index: 10; }
 .carousel-control.prev { left: 10px; }
 .carousel-control.next { right: 10px; }
 
-/\* Rodapé \*/
-footer {
-background-color: rgb(23, 48, 44);
-color: \#fff;
-text-align: center;
-padding: 10px 0;
-margin-top: 40px;
-}
-
-/\* Barra Inferior Fixa \*/
+/\* Rodapé Fixo Inferior \*/
 \#fixed-footer {
 position: fixed;
 bottom: 0;
 left: 0;
 width: 100%;
 background-color: rgb(23, 48, 44);
-color: \#fff;
 padding: 10px 0;
 z-index: 998;
 box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
-
 .footer-content { display: flex; justify-content: center; align-items: center; }
-.contact-info { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
-.contact-info a { text-decoration: none; padding: 10px 20px; border-radius: 5px; color: \#fff; font-size: 1rem; transition: opacity 0.3s ease; display: flex; align-items: center; }
-.contact-info a:hover { opacity: 0.9; }
-.contact-info i { margin-right: 10px; }
+.contact-info { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+.contact-info a { text-decoration: none; padding: 10px 15px; border-radius: 5px; color: \#fff; font-size: 1rem; transition: background-color 0.3s ease; display: flex; align-items: center; }
+.contact-info i { margin-right: 8px; }
 .email-button { background-color: \#0077cc; }
 .whatsapp-button { background-color: \#25d366; }
 .linkedin-button { background-color: \#0a66c2; }
-.instagram-button { background: linear-gradient(45deg, \#405DE6, \#5851DB, \#833AB4, \#C13584, \#E1306C, \#FD1D1D); }
+.instagram-button { background: linear-gradient(45deg, \#405DE6, \#C13584, \#FD1D1D); }
 
-/\* === ESTILOS PARA INTEGRAÇÃO DO GEOMARKETING === \*/
-\#sidebar ul li a.active-link {
-color: \#00aaff;
-font-weight: bold;
-}
-
+/\* Layout da página de Geomarketing \*/
 main.geomarketing-main {
 margin-left: 250px;
 width: calc(100% - 250px);
 transition: margin-left 0.3s ease;
 padding-bottom: 0;
+height: 100vh;
 }
 
 @media (max-width: 768px) {
