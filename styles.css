@@ -24,7 +24,7 @@ body {
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 1001; /* Aumentado para ficar sobre o mapa */
     transition: transform 0.3s ease;
 }
 
@@ -42,7 +42,8 @@ body {
     height: 100%;
     left: 0;
     transition: left 0.3s ease;
-    z-index: 999;
+    z-index: 1000; /* Aumentado para ficar sobre o mapa */
+    flex-shrink: 0; /* Impede que o menu encolha */
 }
 
 @media (max-width: 768px) {
@@ -78,7 +79,7 @@ body {
 main {
     margin-left: 250px;
     width: calc(100% - 250px);
-    transition: margin 0.3s ease;
+    transition: margin-left 0.3s ease;
     padding-bottom: 70px; /* Adicionado para evitar sobreposição com a barra inferior fixa */
 }
 
@@ -86,11 +87,10 @@ main {
     main {
         margin-left: 0;
         width: 100%;
-        padding-bottom: 70px; /* Adicionado para evitar sobreposição com a barra inferior fixa */
     }
 
-    #sidebar.active + main {
-        margin-left: 250px;
+    .hamburger-btn {
+        display: block;
     }
 }
 
@@ -122,7 +122,7 @@ header h1 {
 /* Sobre Nós e Equipe */
 #about, #team, #portfolio {
     padding: 20px;
-    margin: 20px 0;
+    margin: 20px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -310,10 +310,6 @@ footer {
 
 /* Responsividade Mobile */
 @media (max-width: 768px) {
-    .hamburger-btn {
-        display: block;
-    }
-
     .team-grid {
         grid-template-columns: 1fr !important;
     }
@@ -329,5 +325,28 @@ footer {
     .contact-info a {
         padding: 8px 16px;
         font-size: 0.9rem;
+    }
+}
+
+/* === NOVOS ESTILOS ADICIONADOS === */
+
+/* Estilo para o link ativo no menu */
+#sidebar ul li a.active-link {
+    color: #00aaff; /* Uma cor de destaque, ajuste se preferir */
+    font-weight: bold;
+}
+
+/* Ajuste para o conteúdo principal da página de geomarketing */
+main.geomarketing-main {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    transition: margin-left 0.3s ease;
+    padding-bottom: 0; /* Remove o padding extra na página do mapa */
+}
+
+@media (max-width: 768px) {
+    main.geomarketing-main {
+        margin-left: 0;
+        width: 100%;
     }
 }
